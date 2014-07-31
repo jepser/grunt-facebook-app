@@ -13,18 +13,19 @@ module.exports = function( grunt ) {
 			css : []
 		},
 		concat: {
-			options: {
-				stripBanners: true,
-				banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
-					' * <%= pkg.homepage %>\n' +
-					' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
-					' * Licensed GPLv2+' +
-					' */\n'
-			},
-			files : {
-				'app/scripts/app.js' : ['assets/js/src/app.js'],
-                'app/scripts/vendor.js':'<%= vendorResources.js %>',
-                'app/styles/vendor.css':'<%= vendorResources.css %>'
+			all : {
+				options: {
+					stripBanners: true,
+					banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+						' * <%= pkg.homepage %>\n' +
+						' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
+						' * Licensed GPLv2+' +
+						' */\n'
+				},
+				files : {
+	                'app/scripts/vendor.js':'<%= vendorResources.js %>',
+	                'app/styles/vendor.css':'<%= vendorResources.css %>'
+				}
 			}
 		},
 		jshint: {
@@ -48,7 +49,7 @@ module.exports = function( grunt ) {
 		uglify: {
 			all: {
 				files: {
-					'app/scripts/app.min.js': ['src/scripts/app.js']
+					'app/scripts/app.min.js': ['src/scripts/app.js'],
 				},
 				options: {
 					banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
